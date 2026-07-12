@@ -1,4 +1,4 @@
-# Walkthrough: Stage 0, 1, 2, and 3 Execution
+# Walkthrough:
 
 I have successfully completed **Stage 0**, **Stage 1**, **Stage 2**, and **Stage 3** for the ArtistBridge project using the **real Music4All-Onion dataset**. Here is a summary of exactly what was built, how the real data splits were handled, how the audio embeddings were extracted, and how the Collaborative Filtering teacher model was trained.
 
