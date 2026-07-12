@@ -1,6 +1,6 @@
 # Walkthrough:
 
-I have successfully completed **Stage 0**, **Stage 1**, **Stage 2**, and **Stage 3** for the ArtistBridge project using the **real Music4All-Onion dataset**. Here is a summary of exactly what was built, how the real data splits were handled, how the audio embeddings were extracted, and how the Collaborative Filtering teacher model was trained.
+I have successfully completed all the stages for the ArtistBridge project using the **real Music4All-Onion dataset**. Here is a summary of exactly what was built, how the real data splits were handled, how the audio embeddings were extracted, and how the Collaborative Filtering teacher model was trained.
 
 > [!WARNING]
 > This run executes on a formal **2.0% seeded random sample** of the full 253-million row Zenodo interaction dataset, yielding ~5.05 million interactions spanning 15 years. This eliminates the biases seen in the earlier truncated/mocked runs while fully preserving genuine co-listening patterns and popularity skew.
