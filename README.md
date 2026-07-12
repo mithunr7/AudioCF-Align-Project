@@ -30,9 +30,6 @@ protocol with paired significance testing.
 | Semi-Cold | **AudioCF-Align** | **~0.22–0.23** | **p < 1e-60** |
 | Semi-Cold | Artist-history oracle (upper bound) | 0.317 | — |
 
-*Fully-Cold and Semi-Cold scores are not directly comparable to each other —
-see [EXPERIMENTS.md](./EXPERIMENTS.md) for why.*
-
 ## How it works
 
 A **Teacher–Student** setup:
