@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AudioCF-Align Results</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            color: #333333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .table-container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            border: 1px solid #eaeaea;
+        }
+
+        .header {
+            background-color: #f8f9fa;
+            padding: 20px 30px;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        h2 {
+            margin: 0;
+            font-size: 20px;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        p.subtitle {
+            margin: 5px 0 0 0;
+            color: #666;
+            font-size: 14px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            background-color: #ffffff;
+            color: #666;
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 16px 30px;
+            border-bottom: 2px solid #eaeaea;
+        }
+
+        td {
+            padding: 16px 30px;
+            border-bottom: 1px solid #eaeaea;
+            font-size: 15px;
+            color: #1a1a1a;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .method-col {
+            font-weight: 500;
+        }
+
+        .highlight {
+            background-color: #f0f7ff;
+            color: #0056b3;
+            font-weight: 600;
+        }
+
+        .metric {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 14px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .badge-baseline {
+            background-color: #f0f0f0;
+            color: #555;
+        }
+
+        .badge-ours {
+            background-color: #e6f3e6;
+            color: #2e7d32;
+        }
+
+        .badge-oracle {
+            background-color: #fff0f0;
+            color: #c62828;
+        }
+
+        /* Two tables layout */
+        .split {
+            border-top: 8px solid #f8f9fa;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="table-container">
+        <!-- Fully Cold -->
+        <div class="header">
+            <h2>Fully-Cold Evaluation</h2>
+            <p class="subtitle">Unseen Track, Unseen Artist (Recall@10 via Cosine Similarity)</p>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Method</th>
+                    <th>Recall@10</th>
+                    <th>Statistical Significance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="method-col">Random Baseline</td>
+                    <td class="metric">0.1159 &plusmn; 0.0321</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td class="method-col">Artist-Attn Proxy</td>
+                    <td class="metric">0.0071 &plusmn; 0.0082</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td class="method-col">Audio-KNN Proxy<span class="badge badge-baseline">Baseline</span></td>
+                    <td class="metric">0.0811 &plusmn; 0.0272</td>
+                    <td>-</td>
+                </tr>
+                <tr class="highlight">
+                    <td class="method-col">AudioCF-Align<span class="badge badge-ours">My Model</span></td>
+                    <td class="metric">0.1457 &plusmn; 0.0350</td>
+                    <td class="metric">p &lt; 0.002</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Semi Cold -->
+        <div class="header split">
+            <h2>Semi-Cold Evaluation</h2>
+            <p class="subtitle">Unseen Track, Seen Artist (Recall@10 via Cosine Similarity)</p>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Method</th>
+                    <th>Recall@10</th>
+                    <th>Statistical Significance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="method-col">Random Baseline</td>
+                    <td class="metric">0.0991 &plusmn; 0.0126</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td class="method-col">Audio-KNN Proxy<span class="badge badge-baseline">Baseline</span></td>
+                    <td class="metric">0.0637 &plusmn; 0.0105</td>
+                    <td>-</td>
+                </tr>
+                <tr class="highlight">
+                    <td class="method-col">AudioCF-Align<span class="badge badge-ours">My Model</span></td>
+                    <td class="metric">~ 0.2300</td>
+                    <td class="metric">p &lt; 1e-60</td>
+                </tr>
+                <tr>
+                    <td class="method-col">Artist-Attn<span class="badge badge-oracle">Oracle / Cheating</span></td>
+                    <td class="metric">0.3165 &plusmn; 0.0200</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>
